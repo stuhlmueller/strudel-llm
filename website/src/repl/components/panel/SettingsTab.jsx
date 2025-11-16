@@ -113,6 +113,8 @@ export function SettingsTab({ started }) {
     isTabIndentationEnabled,
     isMultiCursorEnabled,
     patternAutoStart,
+    llmOpenAIKey,
+    llmModel,
   } = useSettings();
   const shouldAlwaysSync = isUdels();
   const canChangeAudioDevice = AudioContext.prototype.setSinkId != null;
@@ -310,6 +312,24 @@ export function SettingsTab({ started }) {
           onChange={(cbEvent) => settingsMap.setKey('patternAutoStart', cbEvent.target.checked)}
           value={patternAutoStart}
         />
+      </FormItem>
+      <FormItem label="LLM Assistant">
+        <Textbox
+          type="password"
+          autoComplete="off"
+          placeholder="OpenAI API key (stored locally)"
+          value={llmOpenAIKey ?? ''}
+          onChange={(value) => settingsMap.setKey('llmOpenAIKey', value)}
+        />
+        <Textbox
+          className="mt-2"
+          placeholder="Model name (default gpt-5.1)"
+          value={llmModel ?? ''}
+          onChange={(value) => settingsMap.setKey('llmModel', value || 'gpt-5.1')}
+        />
+        <p className="text-xs text-foreground opacity-70">
+          The key never leaves your browser except for direct requests to OpenAI.
+        </p>
       </FormItem>
       <FormItem label="Zen Mode">Try clicking the logo in the top left!</FormItem>
       <FormItem label="Reset Settings">

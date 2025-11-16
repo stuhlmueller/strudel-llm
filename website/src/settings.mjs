@@ -50,6 +50,8 @@ export const defaultSettings = {
   isCSSAnimationDisabled: false,
   maxPolyphony: 128,
   multiChannelOrbits: false,
+  llmOpenAIKey: '',
+  llmModel: 'gpt-5.1',
 };
 
 let search = null;
