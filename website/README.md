@@ -2,28 +2,29 @@
 
 This is the website for Strudel, deployed at [strudel.cc](https://strudel.cc).
 It includes the REPL live coding editor and the documentation site.
+Development requires Node.js 22.12 or newer and pnpm 11.
 
 ## Run locally
 
 ```bash
-# from project root
-npm run setup
-npm run repl
+# From project root
+sfw pnpm install
+pnpm repl
 ```
 
 ## Build
 
 ```bash
 cd website
-npm run build # <- builds repl + tutorial to ../docs
-npm run preview # <- test static build
+pnpm build # Builds the REPL and tutorial to ../docs
+pnpm preview # Tests the static build
 ```
 
 ## Generate PWA icons
 
 ```sh
 cd website/public
-npx pwa-asset-generator icon.png icons
+pnpm exec pwa-asset-generator icon.png icons
 ```
 
 # Standard Readme of Astro Starter Kit: Docs Site

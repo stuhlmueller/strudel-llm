@@ -240,8 +240,8 @@ export function PitchSlider({
             <span style={{ color: '#eab308' }}>Pitch Sweep</span>
           </Button>
         )}
-        {buttons.map((f, i) => (
-          <Button key={(f, i)} onMouseDown={() => startOsc(f)}>
+        {buttons.map((f) => (
+          <Button key={f} onMouseDown={() => startOsc(f)}>
             {f}Hz
           </Button>
         ))}

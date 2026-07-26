@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^6.0.2",
-    "vite": "^6.0.11",
+    "vite": "8.1.5",
     "vite-plugin-bundle-audioworklet": "workspace:*"
   },
   "engines": {

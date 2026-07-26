@@ -23,7 +23,7 @@ https://strudel.cc/
 
 After cloning the project, you can run the REPL locally:
 
-1. Install [Node.js](https://nodejs.org/) 18 or newer
+1. Install [Node.js](https://nodejs.org/) 22.13 or newer
 2. Install [pnpm](https://pnpm.io/installation)
 3. Install dependencies by running the following command:
    ```bash
@@ -33,6 +33,8 @@ After cloning the project, you can run the REPL locally:
    ```bash
    pnpm dev
    ```
+
+Before pushing, run `pnpm check` and `pnpm build`. GitHub Actions runs both gates on every push and pull request.
 
 ## Using Strudel In Your Project
 

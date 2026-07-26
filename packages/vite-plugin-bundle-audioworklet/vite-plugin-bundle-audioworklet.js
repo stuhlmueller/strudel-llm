@@ -3,7 +3,7 @@ import { createLogger, build } from 'vite';
 const end = '?audioworklet';
 
 function bundleAudioWorkletPlugin() /* : PluginOption */ {
-  let viteConfig /* : UserConfig */;
+  let viteConfig; /* : UserConfig */
 
   return {
     name: 'vite-plugin-bundle-audioworklet',

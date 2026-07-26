@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/tidalcycles/strudel/blob/main/packages/mondo/README.md",
   "devDependencies": {
-    "vite": "^6.0.11",
-    "vitest": "^3.0.4"
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
   },
   "engines": {
     "node": ">=18.0.0"

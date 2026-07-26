@@ -4,9 +4,40 @@ packages:
   - tools/dbpatch
   - website/
 
-onlyBuiltDependencies:
-  - esbuild
-  - nx
-  - sharp
-  - tree-sitter
-  - tree-sitter-haskell
+allowBuilds:
+  '@serialport/bindings-cpp': true
+  esbuild: true
+  nx: true
+  sharp: true
+  tree-sitter: true
+  tree-sitter-cli: true
+  tree-sitter-haskell: true
+
+minimumReleaseAgeExclude:
+  - globals@17.8.0
+
+peerDependencyRules:
+  allowedVersions:
+    '@vite-pwa/astro>astro': 7.1.3
+
+overrides:
+  "@babel/plugin-transform-modules-systemjs": 7.29.4
+  "@babel/runtime": 7.29.7
+  axios: 1.18.0
+  brace-expansion: 5.0.8
+  fast-uri: 3.1.4
+  flatted: 3.4.3
+  handlebars: 4.7.9
+  ip-address: 10.1.1
+  js-yaml: 4.3.0
+  linkify-it: 5.0.2
+  lodash: 4.18.1
+  markdown-it: 14.3.0
+  mdast-util-to-hast: 13.2.1
+  minimatch@3: 3.1.4
+  minimatch@5: 5.1.8
+  picomatch@2: 2.3.2
+  tar: 7.5.21
+  tar-fs@2: 2.1.4
+  underscore: 1.13.8
+  ws@8: 8.21.1

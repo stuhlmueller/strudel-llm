@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "peggy": "^4.2.0",
-    "vite": "^6.0.11",
-    "vitest": "^3.0.4"
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
   },
   "engines": {
     "node": ">=18.0.0"

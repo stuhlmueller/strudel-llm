@@ -4,15 +4,10 @@ import { ALGOLIA } from '../../config';
 import '@docsearch/css';
 import './Search.css';
 
+import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react';
 import { createPortal } from 'react-dom';
-import * as docSearchReact from '@docsearch/react';
 const { BASE_URL } = import.meta.env;
 const baseNoTrailing = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
-
-/** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
-const DocSearchModal = docSearchReact.DocSearchModal || (docSearchReact as any).default.DocSearchModal;
-const useDocSearchKeyboardEvents =
-  docSearchReact.useDocSearchKeyboardEvents || (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +23,9 @@ export default function Search() {
   }, [setIsOpen]);
 
   const onInput = useCallback(
-    (e: any) => {
+    (event: KeyboardEvent) => {
       setIsOpen(true);
-      setInitialQuery(e.key);
+      setInitialQuery(event.key);
     },
     [setIsOpen, setInitialQuery],
   );

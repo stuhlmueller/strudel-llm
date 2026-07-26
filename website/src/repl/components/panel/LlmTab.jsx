@@ -33,7 +33,13 @@ function buildDocsContext(docs = []) {
             .join('; ')
         : 'none';
       const examples = doc.examples?.length ? `Examples:\n${doc.examples.join('\n')}` : '';
-      return [`Function: ${doc.name}`, `Description: ${description}`, `Synonyms: ${synonyms}`, `Parameters: ${params}`, examples]
+      return [
+        `Function: ${doc.name}`,
+        `Description: ${description}`,
+        `Synonyms: ${synonyms}`,
+        `Parameters: ${params}`,
+        examples,
+      ]
         .filter(Boolean)
         .join('\n');
     })
@@ -41,7 +47,10 @@ function buildDocsContext(docs = []) {
 }
 
 function stripHtml(value = '') {
-  return value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  return value
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 async function callOpenAI({ apiKey, model, instruction, code }) {
@@ -173,8 +182,8 @@ export function LlmTab({ context }) {
   return (
     <div className="flex flex-col gap-4 p-4 text-foreground w-full" style={{ fontFamily }}>
       <p className="text-sm opacity-80">
-        Describe the change you want (for example, &ldquo;add a bass layer&rdquo;). The assistant will minimally edit the
-        current Strudel program and update the editor when it succeeds.
+        Describe the change you want (for example, &ldquo;add a bass layer&rdquo;). The assistant will minimally edit
+        the current Strudel program and update the editor when it succeeds.
       </p>
       <textarea
         className="min-h-28 p-3 rounded-md bg-background border border-lineBackground text-foreground"

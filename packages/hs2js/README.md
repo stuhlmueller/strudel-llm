@@ -1,7 +1,7 @@
 # hs2js
 
-Experimental haskell in javascript interpreter. Many haskell features are not implemented.
-This projects mainly exists to be able to write and interpret [Tidal Cycles](https://tidalcycles.org/) code in the browser,
+Experimental Haskell-in-JavaScript interpreter. Many Haskell features are not implemented.
+This project mainly exists to write and interpret [Tidal Cycles](https://tidalcycles.org/) code in the browser,
 as part of [Strudel](https://codeberg.org/uzu/strudel). This project could only exist thanks to [tree-sitter-haskell](https://github.com/tree-sitter/tree-sitter-haskell).
 
 ## Installation
@@ -30,7 +30,7 @@ You need to add `postinstall` to your `package.json` script to copy the parser t
 ```json
 {
   "scripts": {
-    "postinstall": "cp node_modules/hs2js/dist/tree-sitter.wasm public && cp node_modules/hs2js/dist/tree-sitter-haskell.wasm public"
+    "postinstall": "cp node_modules/hs2js/dist/web-tree-sitter.wasm public && cp node_modules/hs2js/dist/tree-sitter-haskell.wasm public"
   }
 }
 ```
@@ -104,7 +104,7 @@ console.log(res); // = 5
 
 ### loadParser
 
-Loads and caches the parser by fetching `tree-sitter.wasm` and `tree-sitter-haskell.wasm`.
+Loads and caches the parser by fetching `web-tree-sitter.wasm` and `tree-sitter-haskell.wasm`.
 Make sure to call and await this function before calling `parse` or `evaluate`.
 
 ```js
@@ -114,14 +114,14 @@ hs2js.loadParser().then(() => hs2js.evaluate('alert "ready"'))
 ### setBase
 
 Sets the base path where the WASM files are expected by `loadParser`. Defaults to `/`.
-Expects `tree-sitter.wasm` and `tree-sitter-haskell.wasm` to be present.
+Expects `web-tree-sitter.wasm` and `tree-sitter-haskell.wasm` to be present.
 Can either be a relative path or a URL.
 
 ```js
 hs2js.setBase('https://unpkg.com/hs2js@0.0.4/dist/');
 hs2js.loadParser(); 
 /* loads 
-- https://unpkg.com/hs2js@0.0.4/dist/tree-sitter.wasm
+- https://unpkg.com/hs2js@0.0.4/dist/web-tree-sitter.wasm
 - https://unpkg.com/hs2js@0.0.4/dist/tree-sitter-haskell.wasm
 */
 ```

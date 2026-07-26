@@ -49,7 +49,7 @@ const posts = (await getCollection('blog')).sort((a, b) => compareDesc(a.data.da
             <RightSidebar
               headings={posts.map((post) => ({
                 depth: 1,
-                slug: post.slug,
+                slug: post.id,
                 text: post.data.title,
               }))}
             />

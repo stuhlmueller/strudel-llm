@@ -38,8 +38,8 @@
     "hydra-synth": "^1.3.29"
   },
   "devDependencies": {
-    "pkg": "^5.8.1",
-    "vite": "^6.0.11"
+    "pkg": "npm:@yao-pkg/pkg@6.21.0",
+    "vite": "8.1.5"
   },
   "engines": {
     "node": ">=18.0.0"

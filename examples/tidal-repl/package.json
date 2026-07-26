@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "pnpm copy-wasm && vite build",
     "preview": "vite preview",
-    "copy-wasm": "cp node_modules/hs2js/dist/tree-sitter.wasm public && cp node_modules/hs2js/dist/tree-sitter-haskell.wasm public"
+    "copy-wasm": "cp node_modules/hs2js/dist/web-tree-sitter.wasm public && cp node_modules/hs2js/dist/tree-sitter-haskell.wasm public"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
     "hs2js": "workspace:*"
   },
   "devDependencies": {
-    "vite": "^6.0.11"
+    "vite": "8.1.5",
+    "vite-plugin-bundle-audioworklet": "workspace:*"
   },
   "engines": {
     "node": ">=18.0.0"

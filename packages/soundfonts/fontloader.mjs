@@ -8,28 +8,46 @@ import {
   getVibratoOscillator,
 } from '@strudel/webaudio';
 import gm from './gm.mjs';
+import { parseFontPreset } from './soundfont-parser.mjs';
 
-let defaultSoundfontUrl = 'https://felixroos.github.io/webaudiofontdata/sound';
+const defaultSoundfontUrl = 'https://felixroos.github.io/webaudiofontdata/sound';
 let soundfontUrl = defaultSoundfontUrl;
+const loadCache = new Map();
+const bufferCache = new Map();
 
 export function setSoundfontUrl(value) {
+  if (value === soundfontUrl) {
+    return;
+  }
   soundfontUrl = value;
+  loadCache.clear();
+  bufferCache.clear();
 }
 
-let loadCache = {};
 async function loadFont(name) {
-  if (loadCache[name]) {
-    return loadCache[name];
+  const cached = loadCache.get(name);
+  if (cached) {
+    return cached;
   }
   const load = async () => {
     // TODO: make soundfont source configurable
     const url = `${soundfontUrl}/${name}.js`;
-    const preset = await fetch(url).then((res) => res.text());
-    let [_, data] = preset.split('={');
-    return eval('{' + data);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`failed to load soundfont "${name}": HTTP ${response.status}`);
+    }
+    return parseFontPreset(await response.text(), name);
   };
-  loadCache[name] = load();
-  return loadCache[name];
+  const pending = load();
+  loadCache.set(name, pending);
+  try {
+    return await pending;
+  } catch (error) {
+    if (loadCache.get(name) === pending) {
+      loadCache.delete(name);
+    }
+    throw error;
+  }
 }
 
 export async function getFontBufferSource(name, value, ac) {
@@ -68,11 +86,11 @@ export async function getFontBufferSource(name, value, ac) {
   return src;
 }
 
-let bufferCache = {};
 export async function getFontPitch(name, pitch, ac) {
   const key = `${name}:::${pitch}`;
-  if (bufferCache[key]) {
-    return bufferCache[key];
+  const cached = bufferCache.get(key);
+  if (cached) {
+    return cached;
   }
   // console.log('load buffer', key);
   const load = async () => {
@@ -82,7 +100,7 @@ export async function getFontPitch(name, pitch, ac) {
     }
     const zone = findZone(preset, pitch);
     if (!zone) {
-      throw new Error('no soundfont zone found for preset ', name, 'pitch', pitch);
+      throw new Error(`no soundfont zone found for preset ${name}, pitch: ${pitch}`);
     }
     const buffer = await getBuffer(zone, ac);
     if (!buffer) {
@@ -90,8 +108,16 @@ export async function getFontPitch(name, pitch, ac) {
     }
     return { buffer, zone };
   };
-  bufferCache[key] = load(); // dont await here to cache promise immediately!
-  return bufferCache[key];
+  const pending = load();
+  bufferCache.set(key, pending);
+  try {
+    return await pending;
+  } catch (error) {
+    if (bufferCache.get(key) === pending) {
+      bufferCache.delete(key);
+    }
+    throw error;
+  }
 }
 
 function findZone(preset, pitch) {
@@ -125,10 +151,9 @@ async function getBuffer(zone, audioContext) {
     }
   } else {
     if (zone.file) {
-      const datalen = zone.file.length;
-      const arraybuffer = new ArrayBuffer(datalen);
-      const view = new Uint8Array(arraybuffer);
       const decoded = atob(zone.file);
+      const arraybuffer = new ArrayBuffer(decoded.length);
+      const view = new Uint8Array(arraybuffer);
       let b;
       for (let i = 0; i < decoded.length; i++) {
         b = decoded.charCodeAt(i);

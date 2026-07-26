@@ -31,12 +31,14 @@
   "dependencies": {
     "@strudel/core": "workspace:*",
     "@strudel/webaudio": "workspace:*",
+    "json5": "2.2.3",
     "sfumato": "^0.1.2",
     "soundfont2": "^0.5.0"
   },
   "devDependencies": {
     "node-fetch": "^3.3.2",
-    "vite": "^6.0.11"
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
   },
   "engines": {
     "node": ">=18.0.0"

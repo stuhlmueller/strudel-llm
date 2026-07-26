@@ -1,3 +1,7 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.cjs';
+@source '../../../packages/react/src';
+
 @font-face {
   font-family: 'PressStart';
   src: url('/fonts/PressStart2P/PressStart2P-Regular.ttf');

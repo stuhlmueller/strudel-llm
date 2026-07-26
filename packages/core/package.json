@@ -35,8 +35,8 @@
   },
   "gitHead": "0e26d4e741500f5bae35b023608f062a794905c2",
   "devDependencies": {
-    "vite": "^6.0.11",
-    "vitest": "^3.0.4"
+    "vite": "8.1.5",
+    "vitest": "4.1.10"
   },
   "engines": {
     "node": ">=18.0.0"

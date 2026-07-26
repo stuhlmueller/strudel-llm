@@ -798,13 +798,13 @@ describe('Pattern', () => {
   describe('apply', () => {
     it('Can apply a function', () => {
       expect(sequence('a', 'b').apply(fast(2)).firstCycle()).toStrictEqual(sequence('a', 'b').fast(2).firstCycle());
-    }),
-      it('Can apply a pattern of functions', () => {
-        expect(sequence('a', 'b').apply(fast(2)).firstCycle()).toStrictEqual(sequence('a', 'b').fast(2).firstCycle());
-        expect(sequence('a', 'b').apply(fast(2), fast(3)).firstCycle()).toStrictEqual(
-          sequence('a', 'b').fast(2, 3).firstCycle(),
-        );
-      });
+    });
+    it('Can apply a pattern of functions', () => {
+      expect(sequence('a', 'b').apply(fast(2)).firstCycle()).toStrictEqual(sequence('a', 'b').fast(2).firstCycle());
+      expect(sequence('a', 'b').apply(fast(2), fast(3)).firstCycle()).toStrictEqual(
+        sequence('a', 'b').fast(2, 3).firstCycle(),
+      );
+    });
   });
   describe('layer', () => {
     it('Can layer up multiple functions', () => {
