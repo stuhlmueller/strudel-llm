@@ -11,8 +11,6 @@ const baseNoTrailing = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 
-<link rel="icon" type="image/svg+xml" href={`${baseNoTrailing}/favicon.ico`} />
-
 <meta
   name="description"
   content="Strudel is a music live coding environment for the browser, porting the TidalCycles pattern language to JavaScript."
@@ -24,7 +22,7 @@ const baseNoTrailing = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL
 <base href={BASE_URL} />
 
 <!-- Scrollable a11y code helper -->
-<script src{`${baseNoTrailing}/make-scrollable-code-focusable.js`} is:inline></script>
+<script src={`${baseNoTrailing}/make-scrollable-code-focusable.js`} is:inline></script>
 
 <script src="/src/pwa.ts"></script>
 <!-- this does not work for some reason: -->

@@ -78,7 +78,7 @@ const pwa = AstroPWA({
           cacheName: 'external-samples',
           expiration: {
             maxEntries: 5000,
-            maxAgeSeconds: 60 * 60 * 24 * 30, // <== 14 days
+            maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
           },
           cacheableResponse: {
             statuses: [0, 200],
@@ -90,8 +90,8 @@ const pwa = AstroPWA({
   devOptions: {
     enabled: false,
   },
+  includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
   manifest: {
-    includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
     name: 'Strudel REPL',
     short_name: 'Strudel',
     description:

@@ -27,7 +27,7 @@ After cloning the project, you can run the REPL locally:
 2. Install [pnpm](https://pnpm.io/installation)
 3. Install dependencies by running the following command:
    ```bash
-   pnpm i
+   sfw pnpm install
    ```
 4. Run the development server:
    ```bash
