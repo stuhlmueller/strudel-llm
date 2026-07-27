@@ -91,7 +91,7 @@ const pwa = AstroPWA({
     enabled: false,
   },
   manifest: {
-    includeAssets: ['favicon.ico', 'icons/apple-icon-180.png'],
+    includeAssets: ['favicon.ico', 'apple-touch-icon-180x180.png'],
     name: 'Strudel REPL',
     short_name: 'Strudel',
     description:
@@ -99,25 +99,25 @@ const pwa = AstroPWA({
     theme_color: '#222222',
     icons: [
       {
-        src: 'icons/manifest-icon-192.maskable.png',
+        src: 'pwa-64x64.png',
+        sizes: '64x64',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: 'pwa-192x192.png',
         sizes: '192x192',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: 'icons/manifest-icon-192.maskable.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'maskable',
-      },
-      {
-        src: 'icons/manifest-icon-512.maskable.png',
+        src: 'pwa-512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'any',
       },
       {
-        src: 'icons/manifest-icon-512.maskable.png',
+        src: 'maskable-icon-512x512.png',
         sizes: '512x512',
         type: 'image/png',
         purpose: 'maskable',

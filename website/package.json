@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview --port 3009 --host 0.0.0.0",
-    "astro": "astro"
+    "astro": "astro",
+    "generate:pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
     "@algolia/client-search": "^5.20.0",
@@ -70,6 +71,7 @@
     "worker-timers": "^8.0.13"
   },
   "devDependencies": {
+    "@vite-pwa/assets-generator": "1.0.2",
     "@vite-pwa/astro": "1.2.0",
     "html-escaper": "^3.0.3",
     "sharp": "0.35.3",
