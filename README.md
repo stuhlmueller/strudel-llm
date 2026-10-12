@@ -6,12 +6,10 @@ https://github.com/user-attachments/assets/197a08b7-35bb-4422-8917-72b3e23aa5c1
 
 Original repo: [codeberg.org/uzu/strudel](https://codeberg.org/uzu/strudel)
 
-# strudel
+## Upstream Strudel
 
 Live coding patterns on the web
 https://strudel.cc/
-
-- **Meet strudel-llm:** an optional assistant built into the REPL that lets you describe the musical change you want in plain language and have the editor update itself with a minimal, runnable Strudel program. Bring your own OpenAI API key (stored only in your browser), open the LLM tab, and strudel-llm will apply the suggestion, evaluate it, and let you undo or iterate as you go.
 
 - Try it here: <https://strudel.cc>
 - Docs: <https://strudel.cc/learn>
